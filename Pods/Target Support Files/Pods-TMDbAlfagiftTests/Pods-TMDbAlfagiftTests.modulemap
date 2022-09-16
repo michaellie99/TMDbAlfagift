@@ -1,0 +1,6 @@
+framework module Pods_TMDbAlfagiftTests {
+  umbrella header "Pods-TMDbAlfagiftTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
