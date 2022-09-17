@@ -11,6 +11,7 @@ import Kingfisher
 class MoviePosterCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
+    
     func setCell(_ info: MovieInfo){
         let path = info.posterPath ?? ""
         let url = URL(string: "https://image.tmdb.org/t/p/w500\(path)")

@@ -34,7 +34,9 @@ class MainViewController: UIViewController {
             cell.setCell(data)
         }.disposed(by: disposeBag)
         collectionView.rx.modelSelected(MovieInfo.self).bind { info in
-            print(info.title)
+            let vc = MovieDetailViewController()
+            vc.vm.id = info.id
+            self.navigationController?.pushViewController(vc, animated: true)
         }.disposed(by: disposeBag)
     }
 

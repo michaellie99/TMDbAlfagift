@@ -7,6 +7,13 @@
 
 import Foundation
 
+class GetNowPlayingResponse: Codable {
+    let page: Int
+    let results: [MovieInfo]
+    let totalPages: Int
+    let totalResults: Int
+}
+
 class MovieInfo: Codable {
     let posterPath: String?
     let releaseDate: String

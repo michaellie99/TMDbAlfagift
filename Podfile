@@ -7,6 +7,7 @@ target 'TMDbAlfagift' do
   pod 'RxCocoa'
   pod 'RxSwift'
   pod 'Kingfisher', '~> 7.0'
+  pod "youtube-ios-player-helper"
   # Pods for TMDbAlfagift
 
   target 'TMDbAlfagiftTests' do

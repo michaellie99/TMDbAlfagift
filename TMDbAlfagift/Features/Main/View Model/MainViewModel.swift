@@ -16,7 +16,7 @@ class MainViewModel{
     var totalPages = 100
     
     func fetchNowPlaying(){
-        TheNetworkManager.fetchNowPlaying(page: 1) { data in
+        TheNetworkManager.fetchNowPlaying(page: 1) { [unowned self] data in
             if let data = data {
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
@@ -26,7 +26,7 @@ class MainViewModel{
         }
     }
     func fetchNextNowPlaying(){
-        TheNetworkManager.fetchNowPlaying(page: currentPage+1) { data in
+        TheNetworkManager.fetchNowPlaying(page: currentPage+1) { [unowned self] data in
             if let data = data {
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
@@ -35,7 +35,7 @@ class MainViewModel{
             }
         }
     }
-    func updatePageData(_ response: NowPlayingResponse){
+    private func updatePageData(_ response: GetNowPlayingResponse){
         var array: [MovieInfo] = movieList.value
         array.append(contentsOf: response.results)
         movieList.accept(array)
