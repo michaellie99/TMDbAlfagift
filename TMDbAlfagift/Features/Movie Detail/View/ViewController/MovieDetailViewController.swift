@@ -52,10 +52,30 @@ class MovieDetailViewController: UIViewController {
         backButton.rx.tap.bind { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }.disposed(by: disposeBag)
+        tableView.rx.modelSelected(Review.self).bind{ [weak self] review in
+            let vc = ReviewDetailViewController()
+            vc.vm = ReviewDetailViewModel(review)
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.modalTransitionStyle = .crossDissolve
+            self?.present(vc, animated: true)
+        }.disposed(by: disposeBag)
+        tableView.rx.itemSelected.bind{ [weak self] indexPath in
+            self?.tableView.deselectRow(at: indexPath, animated: true)
+            let review = self?.vm.reviewList.value[indexPath.row]
+            let vc = ReviewDetailViewController()
+            vc.vm = ReviewDetailViewModel(review!)
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.modalTransitionStyle = .crossDissolve
+            self?.present(vc, animated: true)
+        }.disposed(by: disposeBag)
     }
     func getDetail(){
-        vm.getMovieDetail()
-        vm.getReviews()
+        vm.getMovieDetail{ [weak self] in
+            self?.showError("Fetch Movie Detail Error")
+        }
+        vm.getReviews{ [weak self] in
+            self?.showError("Fetch Reviews Error")
+        }
     }
 }
 
@@ -64,6 +84,7 @@ extension MovieDetailViewController: YTPlayerViewDelegate{
         self.youtubeLoadingIndicatorView.isHidden = true
     }
     func playerView(_ playerView: YTPlayerView, receivedError error: YTPlayerError) {
+        self.showError("Error Loading Youtube Video")
     }
     
 }

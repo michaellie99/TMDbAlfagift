@@ -17,6 +17,10 @@
 		4C1BBA5D28D5B09C00CC7913 /* ReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C1BBA5B28D5B09C00CC7913 /* ReviewTableViewCell.xib */; };
 		4C1BBA5F28D5B1EF00CC7913 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BBA5E28D5B1EF00CC7913 /* Review.swift */; };
 		4C1BBA6228D6E7B500CC7913 /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BBA6128D6E7B500CC7913 /* UIKitExtensions.swift */; };
+		4C1BBA6428D6F4BF00CC7913 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BBA6328D6F4BF00CC7913 /* Reachability.swift */; };
+		4C1BBA6728D6F7D000CC7913 /* ReviewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BBA6528D6F7D000CC7913 /* ReviewDetailViewController.swift */; };
+		4C1BBA6828D6F7D000CC7913 /* ReviewDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C1BBA6628D6F7D000CC7913 /* ReviewDetailViewController.xib */; };
+		4C1BBA6E28D6F80900CC7913 /* ReviewDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BBA6D28D6F80900CC7913 /* ReviewDetailViewModel.swift */; };
 		4C23AF9228D4AB5B0085AD91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23AF9128D4AB5B0085AD91 /* AppDelegate.swift */; };
 		4C23AF9B28D4AB5D0085AD91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C23AF9A28D4AB5D0085AD91 /* Assets.xcassets */; };
 		4C23AF9E28D4AB5D0085AD91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C23AF9C28D4AB5D0085AD91 /* LaunchScreen.storyboard */; };
@@ -62,6 +66,10 @@
 		4C1BBA5B28D5B09C00CC7913 /* ReviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewTableViewCell.xib; sourceTree = "<group>"; };
 		4C1BBA5E28D5B1EF00CC7913 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		4C1BBA6128D6E7B500CC7913 /* UIKitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
+		4C1BBA6328D6F4BF00CC7913 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		4C1BBA6528D6F7D000CC7913 /* ReviewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailViewController.swift; sourceTree = "<group>"; };
+		4C1BBA6628D6F7D000CC7913 /* ReviewDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewDetailViewController.xib; sourceTree = "<group>"; };
+		4C1BBA6D28D6F80900CC7913 /* ReviewDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailViewModel.swift; sourceTree = "<group>"; };
 		4C23AF8E28D4AB5B0085AD91 /* TMDbAlfagift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDbAlfagift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C23AF9128D4AB5B0085AD91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C23AF9A28D4AB5D0085AD91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -180,6 +188,40 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		4C1BBA6928D6F7E000CC7913 /* Review Detail */ = {
+			isa = PBXGroup;
+			children = (
+				4C1BBA6B28D6F7EC00CC7913 /* View */,
+				4C1BBA6A28D6F7E700CC7913 /* View Model */,
+			);
+			path = "Review Detail";
+			sourceTree = "<group>";
+		};
+		4C1BBA6A28D6F7E700CC7913 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				4C1BBA6D28D6F80900CC7913 /* ReviewDetailViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		4C1BBA6B28D6F7EC00CC7913 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4C1BBA6C28D6F7EF00CC7913 /* View Controller */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4C1BBA6C28D6F7EF00CC7913 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4C1BBA6528D6F7D000CC7913 /* ReviewDetailViewController.swift */,
+				4C1BBA6628D6F7D000CC7913 /* ReviewDetailViewController.xib */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
 		4C23AF8528D4AB5A0085AD91 = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +294,7 @@
 		4CF841A928D55CCB00DB5A0A /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				4C1BBA6928D6F7E000CC7913 /* Review Detail */,
 				4CF841AB28D55D0C00DB5A0A /* Main */,
 				4C1BBA4A28D59A5A00CC7913 /* Movie Detail */,
 			);
@@ -323,6 +366,7 @@
 			isa = PBXGroup;
 			children = (
 				4CF841BC28D561C400DB5A0A /* NetworkManager.swift */,
+				4C1BBA6328D6F4BF00CC7913 /* Reachability.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -464,6 +508,7 @@
 				4C70446528D4B1E100F8C679 /* MainViewController.xib in Resources */,
 				4C1BBA5D28D5B09C00CC7913 /* ReviewTableViewCell.xib in Resources */,
 				4CF841B328D55E9F00DB5A0A /* MoviePosterCollectionViewCell.xib in Resources */,
+				4C1BBA6828D6F7D000CC7913 /* ReviewDetailViewController.xib in Resources */,
 				4C23AF9B28D4AB5D0085AD91 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,11 +637,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C1BBA6728D6F7D000CC7913 /* ReviewDetailViewController.swift in Sources */,
+				4C1BBA6428D6F4BF00CC7913 /* Reachability.swift in Sources */,
 				4CF841BD28D561C400DB5A0A /* NetworkManager.swift in Sources */,
 				4CF841B228D55E9F00DB5A0A /* MoviePosterCollectionViewCell.swift in Sources */,
 				4CF841BA28D5614800DB5A0A /* MovieInfo.swift in Sources */,
 				4C1BBA4F28D59A9900CC7913 /* MovieDetailViewController.swift in Sources */,
 				4C70446428D4B1E100F8C679 /* MainViewController.swift in Sources */,
+				4C1BBA6E28D6F80900CC7913 /* ReviewDetailViewModel.swift in Sources */,
 				4C1BBA5F28D5B1EF00CC7913 /* Review.swift in Sources */,
 				4C23AF9228D4AB5B0085AD91 /* AppDelegate.swift in Sources */,
 				4C1BBA5C28D5B09C00CC7913 /* ReviewTableViewCell.swift in Sources */,

@@ -49,7 +49,7 @@ class MainViewController: UIViewController {
 
     func fetchData(){
         vm.fetchNowPlaying { [weak self] in
-            self?.showError("Fetch Error")
+            self?.showError("Fetch Now Playing Error")
         }
     }
 }

@@ -32,6 +32,10 @@ public class NetworkManager {
     }
     
     func fetchNowPlaying(page: Int, completionHandler: @escaping (GetNowPlayingResponse?) -> Void) {
+        if !Reachability.isConnectedToNetwork(){
+            completionHandler(nil)
+            return
+        }
         if let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)&language=en-US&page=\(page)&region=US") {
             let task = session.dataTask(with: url) { (data, response, error) in
                 if let err = error {
@@ -54,6 +58,10 @@ public class NetworkManager {
         }
     }
     func getVideos(id: Int, completionHandler: @escaping (GetVideoResponse?) -> Void) {
+        if !Reachability.isConnectedToNetwork(){
+            completionHandler(nil)
+            return
+        }
         if let url = URL(string: "https://api.themoviedb.org/3/movie/\(id)/videos?api_key=\(apiKey)&language=en-US") {
             let task = session.dataTask(with: url) { (data, response, error) in
                 if let err = error {
@@ -77,6 +85,10 @@ public class NetworkManager {
     }
     
     func getMovieDetail(id: Int, completionHandler: @escaping (MovieDetail?) -> Void) {
+        if !Reachability.isConnectedToNetwork(){
+            completionHandler(nil)
+            return
+        }
         if let url = URL(string: "https://api.themoviedb.org/3/movie/\(id)?api_key=\(apiKey)") {
             let task = session.dataTask(with: url) { (data, response, error) in
                 if let err = error {
@@ -100,6 +112,10 @@ public class NetworkManager {
     }
     
     func getReviews(id: Int, completionHandler: @escaping (GetReviewsResponse?) -> Void) {
+        if !Reachability.isConnectedToNetwork(){
+            completionHandler(nil)
+            return
+        }
         if let url = URL(string: "https://api.themoviedb.org/3/movie/\(id)/reviews?api_key=\(apiKey)") {
             let task = session.dataTask(with: url) { (data, response, error) in
                 if let err = error {

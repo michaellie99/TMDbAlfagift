@@ -33,23 +33,23 @@ class MovieDetailViewModel{
             }
         }
     }
-    func getMovieDetail(){
+    func getMovieDetail(error: (()->Void)?){
         TheNetworkManager.getMovieDetail(id: id) { [unowned self] data in
             if let data = data{
                 title.accept(data.title)
                 overview.accept(data.overview)
             }else{
-                
+                error!()
             }
         }
     }
-    func getReviews(){
+    func getReviews(error: (()->Void)?){
         TheNetworkManager.getReviews(id: id) {  [unowned self] data in
             if let data = data{
                 reviewList.accept(data.reviews)
                 isReviewHidden.accept(!data.reviews.isEmpty)
             }else{
-                //catch api error
+                error!()
             }
         }
     }

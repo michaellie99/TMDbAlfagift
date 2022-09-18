@@ -18,10 +18,7 @@ class MainViewModel{
     func fetchNowPlaying(error: (()->Void)?){
         TheNetworkManager.fetchNowPlaying(page: 1) { data in
             if let data = data {
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    self.updatePageData(data)
-                }
+                self.updatePageData(data)
             }else{
                 error!()
             }

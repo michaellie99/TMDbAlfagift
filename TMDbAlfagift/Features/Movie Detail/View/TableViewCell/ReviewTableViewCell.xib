@@ -22,7 +22,7 @@
                         <rect key="frame" x="16" y="8" width="433" height="185"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njR-Wn-YKc">
-                                <rect key="frame" x="16" y="69" width="399" height="108"/>
+                                <rect key="frame" x="16" y="69" width="399" height="84"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -42,17 +42,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See More" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqs-f8-x0x">
+                                <rect key="frame" x="344" y="157" width="73" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="linkColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="sqs-f8-x0x" firstAttribute="top" secondItem="njR-Wn-YKc" secondAttribute="bottom" constant="4" id="0O0-Gl-QwO"/>
                             <constraint firstItem="IhX-TX-bnG" firstAttribute="leading" secondItem="pcq-Ey-VqC" secondAttribute="leading" constant="16" id="3jP-jl-JGs"/>
                             <constraint firstItem="pnt-KT-IbC" firstAttribute="leading" secondItem="pcq-Ey-VqC" secondAttribute="leading" constant="16" id="7VY-h0-PCi"/>
                             <constraint firstItem="njR-Wn-YKc" firstAttribute="leading" secondItem="pcq-Ey-VqC" secondAttribute="leading" constant="16" id="D8c-4O-4dR"/>
+                            <constraint firstAttribute="trailing" secondItem="sqs-f8-x0x" secondAttribute="trailing" constant="16" id="Dk7-mp-unA"/>
                             <constraint firstAttribute="trailing" secondItem="pnt-KT-IbC" secondAttribute="trailing" constant="16" id="JUG-3j-Yby"/>
                             <constraint firstAttribute="trailing" secondItem="IhX-TX-bnG" secondAttribute="trailing" constant="16" id="M5M-S8-700"/>
+                            <constraint firstAttribute="bottom" secondItem="sqs-f8-x0x" secondAttribute="bottom" constant="16" id="RYf-rL-BpY"/>
                             <constraint firstItem="pnt-KT-IbC" firstAttribute="top" secondItem="IhX-TX-bnG" secondAttribute="bottom" constant="4" id="ThL-IM-m9H"/>
                             <constraint firstItem="IhX-TX-bnG" firstAttribute="top" secondItem="pcq-Ey-VqC" secondAttribute="top" constant="16" id="XbI-jv-oTm"/>
-                            <constraint firstAttribute="bottom" secondItem="njR-Wn-YKc" secondAttribute="bottom" constant="8" id="ZrE-ue-2qO"/>
+                            <constraint firstAttribute="bottom" secondItem="njR-Wn-YKc" secondAttribute="bottom" constant="32" id="ZrE-ue-2qO"/>
                             <constraint firstItem="njR-Wn-YKc" firstAttribute="top" secondItem="pnt-KT-IbC" secondAttribute="bottom" constant="16" id="di7-2Q-N9n"/>
                             <constraint firstAttribute="trailing" secondItem="njR-Wn-YKc" secondAttribute="trailing" constant="18" id="vWd-gj-Frl"/>
                         </constraints>
@@ -72,12 +81,16 @@
                 <outlet property="authorLabel" destination="IhX-TX-bnG" id="pX8-Se-J0b"/>
                 <outlet property="containerView" destination="pcq-Ey-VqC" id="pjf-cy-zfk"/>
                 <outlet property="dateLabel" destination="pnt-KT-IbC" id="yQd-cK-RdZ"/>
-                <outlet property="reviewContentLabel" destination="njR-Wn-YKc" id="YgL-He-WkL"/>
+                <outlet property="reviewContentLabel" destination="njR-Wn-YKc" id="m6M-jX-gs5"/>
+                <outlet property="seeMoreLabel" destination="sqs-f8-x0x" id="pBI-k3-MbV"/>
             </connections>
             <point key="canvasLocation" x="119.23076923076923" y="76.421800947867297"/>
         </tableViewCell>
     </objects>
     <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
