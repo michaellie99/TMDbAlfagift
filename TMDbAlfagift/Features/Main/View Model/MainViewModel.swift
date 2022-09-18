@@ -15,23 +15,28 @@ class MainViewModel{
     var currentPage = 0
     var totalPages = 100
     
-    func fetchNowPlaying(){
-        TheNetworkManager.fetchNowPlaying(page: 1) { [unowned self] data in
+    func fetchNowPlaying(error: (()->Void)?){
+        TheNetworkManager.fetchNowPlaying(page: 1) { data in
             if let data = data {
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
                     self.updatePageData(data)
                 }
+            }else{
+                error!()
             }
         }
     }
-    func fetchNextNowPlaying(){
-        TheNetworkManager.fetchNowPlaying(page: currentPage+1) { [unowned self] data in
+    func fetchNextNowPlaying(error: (()->Void)?){
+        guard currentPage < totalPages else {return}
+        TheNetworkManager.fetchNowPlaying(page: currentPage+1) { data in
             if let data = data {
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
                     self.updatePageData(data)
                 }
+            }else{
+                error!()
             }
         }
     }

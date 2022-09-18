@@ -16,8 +16,9 @@ class MoviePosterCollectionViewCell: UICollectionViewCell {
         let path = info.posterPath ?? ""
         let url = URL(string: "https://image.tmdb.org/t/p/w500\(path)")
         let processor = RoundCornerImageProcessor(cornerRadius: 16)
+        imageView.contentMode = .scaleAspectFit
         imageView.kf.indicatorType = .activity
-        imageView.kf.setImage(with: url, options: [.processor(processor)])
+        imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"),options: [.processor(processor)])
     }
     override func awakeFromNib() {
         super.awakeFromNib()

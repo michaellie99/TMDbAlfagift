@@ -32,7 +32,7 @@ public class NetworkManager {
     }
     
     func fetchNowPlaying(page: Int, completionHandler: @escaping (GetNowPlayingResponse?) -> Void) {
-        if let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)&language=en-US&page=\(page)&region=ID") {
+        if let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)&language=en-US&page=\(page)&region=US") {
             let task = session.dataTask(with: url) { (data, response, error) in
                 if let err = error {
                     print(err.localizedDescription)

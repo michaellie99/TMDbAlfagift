@@ -13,6 +13,9 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var toTopButtonView: UIView!
+    @IBOutlet weak var toTopButton: UIButton!
+    
     private let cellId = "MoviePosterCollectionViewCell"
     private var vm = MainViewModel()
     private var disposeBag = DisposeBag()
@@ -25,6 +28,7 @@ class MainViewController: UIViewController {
     }
     
     func setUI(){
+        toTopButtonView.layer.cornerRadius = 18
         collectionView.register(UINib(nibName: cellId, bundle: nil), forCellWithReuseIdentifier: cellId)
     }
     func setRx(){
@@ -38,10 +42,15 @@ class MainViewController: UIViewController {
             vc.vm.id = info.id
             self.navigationController?.pushViewController(vc, animated: true)
         }.disposed(by: disposeBag)
+        toTopButton.rx.tap.bind { [weak self] in
+            self?.collectionView.setContentOffset(CGPoint(x:0,y:0), animated: true)
+        }.disposed(by: disposeBag)
     }
 
     func fetchData(){
-        vm.fetchNowPlaying()
+        vm.fetchNowPlaying { [weak self] in
+            self?.showError("Fetch Error")
+        }
     }
 }
 
@@ -49,12 +58,40 @@ extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row == self.vm.movieList.value.count - 2{
-            self.vm.fetchNextNowPlaying()
+            self.vm.fetchNextNowPlaying { [weak self] in
+                self?.showError("Fetch Error")
+            }
         }
+        if indexPath.row == 0 && !toTopButtonView.isHidden{
+            UIView.animate(withDuration: 0.4) {
+                self.toTopButtonView.isHidden = true
+                self.toTopButtonView.alpha = 0
+            }
+        }
+        if indexPath.row > 10 && toTopButtonView.isHidden{
+            UIView.animate(withDuration: 0.4) {
+                self.toTopButtonView.alpha = 0.75
+                self.toTopButtonView.isHidden = false
+            }
+        }
+        
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.bounds.width
-        let cellWidth = (width - 20) / 2
+        let cellWidth = width / 2
         return CGSize(width: cellWidth, height: cellWidth * 3 / 2)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.zero
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }
