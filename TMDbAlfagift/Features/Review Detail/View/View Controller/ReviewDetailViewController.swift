@@ -29,7 +29,7 @@ class ReviewDetailViewController: UIViewController {
         guard let vm = vm else{return}
         containerView.roundViewCorner(cornerRadius: 16, borderWidth: 1, borderColor: UIColor(red: 0.9137, green: 0, blue: 0.9294, alpha: 1.0))
         authorLabel.text = vm.author
-        dateLabel.text = vm.author
+        dateLabel.text = vm.reviewDate
         contentLabel.text = vm.content
     }
     func setRx(){
